@@ -8,11 +8,10 @@ use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\Response;
 
 /**
- * Class PostIndexRequest
+ * Class PostCreateRequest
  * @package App\Http\Requests\PostRequests
- * @property int $per_page
  */
-class PostIndexRequest extends FormRequest
+class PostCreateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -32,7 +31,7 @@ class PostIndexRequest extends FormRequest
     public function rules()
     {
         return [
-            'per_page' => 'int'
+            'content' => 'required|string'
         ];
     }
 

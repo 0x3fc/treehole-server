@@ -2,26 +2,34 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\PostRequests\PostIndexRequest;
+use App\Http\Requests\PostRequests\PostCreateRequest;
 use App\Http\Resources\PostResource;
 use App\Models\Post;
 use Illuminate\Http\JsonResponse;
 
 class PostController extends Controller
 {
-    /** @var int DEFAULT_PER_PAGE: the default paginate per page property */
-    private const DEFAULT_PER_PAGE = 20;
+    /** @var int INDEX_PER_PAGE: the default paginate per page property */
+    private const INDEX_PER_PAGE = 20;
 
     /**
-     * @param PostIndexRequest $request
      * @return JsonResponse: paginated post list ordered by the latest created date first
      */
-    public function index(PostIndexRequest $request): JsonResponse
+    public function index(): JsonResponse
     {
-        $perPage = $request->has('per_page') ? $request->per_page : self::DEFAULT_PER_PAGE;
-
-        $posts = Post::orderBy('id', 'desc')->paginate($perPage);
+        $posts = Post::orderBy('id', 'desc')->paginate(self::INDEX_PER_PAGE);
 
         return PostResource::collection($posts)->response();
+    }
+
+    /**
+     * @param PostCreateRequest $request
+     * @return JsonResponse
+     */
+    public function create(PostCreateRequest $request): JsonResponse
+    {
+        Post::create(['content' => $request->input('content')]);
+
+        return response()->json(['success' => true]);
     }
 }

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-    public const CREATED_AT = 'created_at';
+    public const UPDATED_AT = null;
 
     /**
      * The attributes that are mass assignable.
