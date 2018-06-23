@@ -28,8 +28,8 @@ class PostController extends Controller
      */
     public function create(PostCreateRequest $request): JsonResponse
     {
-        Post::create(['content' => $request->input('content')]);
+        $post = Post::create(['content' => $request->input('content')]);
 
-        return response()->json(['success' => true]);
+        return PostResource::make($post)->response();
     }
 }
