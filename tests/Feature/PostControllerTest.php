@@ -2,12 +2,15 @@
 
 namespace Tests\Feature;
 
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\Response;
 use Tests\TestCase;
 use Validator;
 
 class PostControllerTest extends TestCase
 {
+    use RefreshDatabase;
+
     /**
      * @test
      */
@@ -53,7 +56,7 @@ class PostControllerTest extends TestCase
         ];
 
         /* create a post */
-        $response = $this->call('POST', 'api/v1/post', [
+        $response = $this->call('POST', 'api/v1/posts', [
             'content' => 'This is a post request post content.'
         ]);
 
