@@ -1,6 +1,7 @@
 <p align="center"><img src="https://github.com/senhungwong/treehole-server/blob/master/resources/assets/images/treehole-en.png" width="60%"></p>
 
 [![Build Status](https://travis-ci.org/travis-ci/travis-web.svg?branch=master)](https://travis-ci.org/travis-ci/travis-web)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Description
 
