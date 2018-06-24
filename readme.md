@@ -1,5 +1,7 @@
 <p align="center"><img src="https://github.com/senhungwong/treehole-server/blob/master/resources/assets/images/treehole-en.png" width="60%"></p>
 
+[![Build Status](https://travis-ci.org/travis-ci/travis-web.svg?branch=master)](https://travis-ci.org/travis-ci/travis-web)
+
 ## Description
 
 A server side secret burier. User can post anonymously their secrets to release the stress. Others can view these secrets from all over the world without knowing the person.
