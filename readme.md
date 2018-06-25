@@ -27,6 +27,12 @@ The project is built with [treehole-client](https://github.com/senhungwong/treeh
 
 **IMPORTANT: The back end is hosted on a free server. Please do not overwhalm the server by sending too many posts. Thank you!**
 
+## API
+
+[Posts APIs](docs/APIs/posts.md)
+
+[Postman Collection](docs/APIs/postman-collection.md)
+
 ## Notes
 
 Project icon is referenced from [文艺卡通小清新装饰插画广告设计](http://588ku.com/sucai/9691411.html)
