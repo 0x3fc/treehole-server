@@ -3,7 +3,7 @@
 <p align="center">
 <a href="https://travis-ci.org/travis-ci/travis-web"><img src="https://travis-ci.org/senhungwong/treehole-server.svg?branch=master" alt="Build Status"></a>
 <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a>
-<a href="https://github.com/senhungwong/treehole-server/releases"><img src="https://img.shields.io/github/release/senhungwong/treehole-server.svg?label=Release" alt="GitHub release"></a>
+<a href="https://github.com/senhungwong/treehole-server/tags"><img src="https://img.shields.io/github/tag/senhungwong/treehole-server.svg" alt="GitHub tag"></a>
 </p>
 
 ## Description
@@ -26,6 +26,12 @@ The project is built with [treehole-client](https://github.com/senhungwong/treeh
 [Treehole](http://treehole.senhung.net)
 
 **IMPORTANT: The back end is hosted on a free server. Please do not overwhalm the server by sending too many posts. Thank you!**
+
+## API
+
+[Posts APIs](docs/APIs/posts.md)
+
+[Postman Collection](docs/APIs/postman-collection.md)
 
 ## Notes
 
