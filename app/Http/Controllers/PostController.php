@@ -7,6 +7,7 @@ use App\Http\Resources\PostResource;
 use App\Models\Post;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\DB;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class PostController extends Controller
 {
@@ -60,6 +61,10 @@ class PostController extends Controller
      */
     public function retrieveImage(Post $post)
     {
+        if (!$post->image) {
+            throw new NotFoundHttpException();
+        }
+
         $imagePath = storage_path('app' . DIRECTORY_SEPARATOR . $post->image);
 
         return response()->file($imagePath);

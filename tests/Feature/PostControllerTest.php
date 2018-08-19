@@ -110,5 +110,24 @@ class PostControllerTest extends TestCase
         $post = Post::where('content', $testContent)->first();
 
         Storage::disk('local')->assertExists($post->image);
+
+        $response = $this->get("api/v1/posts/images/{$post->id}")
+            ->assertStatus(Response::HTTP_OK);
+    }
+
+    /**
+     * @test
+     */
+    public function retrieveNotFoundImage()
+    {
+        $testContent = 'test image not found';
+
+        $this->post('api/v1/posts', ['content' => $testContent])
+            ->assertStatus(Response::HTTP_CREATED);
+
+        $post = Post::where('content', $testContent)->first();
+
+        $this->get("api/v1/posts/images/{$post->id}")
+            ->assertStatus(Response::HTTP_NOT_FOUND);
     }
 }
