@@ -6,10 +6,13 @@ use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\Response;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * Class PostCreateRequest
  * @package App\Http\Requests\PostRequests
+ *
+ * @property UploadedFile $image
  */
 class PostCreateRequest extends FormRequest
 {
@@ -31,7 +34,8 @@ class PostCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'content' => 'required|string'
+            'content' => 'required|string',
+            'image'   => 'image',
         ];
     }
 

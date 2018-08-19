@@ -49,7 +49,7 @@ Response:
 
 ## Create
 
-Create a post with content.
+Create a post with content and image.
 
 ```
 POST /api/v1/posts
@@ -59,7 +59,8 @@ POST /api/v1/posts
 Request:
 
 {
-	"content": "..."  // the content string you want to post, required
+	"content": "...",  // the content string you want to post, required
+	"image": "..."     // the image as a file
 }
 ```
 

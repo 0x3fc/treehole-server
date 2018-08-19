@@ -2,14 +2,27 @@
 
 namespace Tests\Feature;
 
+use App\Models\Post;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\Response;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 use Tests\TestCase;
 use Validator;
 
 class PostControllerTest extends TestCase
 {
     use RefreshDatabase;
+
+    /**
+     * Set up tests
+     */
+    public function setUp()
+    {
+        parent::setUp();
+
+        Storage::fake('local');
+    }
 
     /**
      * @test
@@ -78,5 +91,24 @@ class PostControllerTest extends TestCase
         $validator = Validator::make($response, $indexResponseRules);
 
         $this->assertFalse($validator->fails());
+    }
+
+    /**
+     * @test
+     */
+    public function storeImage()
+    {
+        $image = UploadedFile::fake()->image('fake.image.jpg');
+
+        $testContent = 'test content';
+
+        $this->post('api/v1/posts', [
+            'content' => $testContent,
+            'image'   => $image,
+        ])->assertStatus(Response::HTTP_CREATED);
+
+        $post = Post::where('content', $testContent)->first();
+
+        Storage::disk('local')->assertExists($post->image);
     }
 }
