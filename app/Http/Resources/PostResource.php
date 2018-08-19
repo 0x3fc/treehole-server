@@ -17,6 +17,7 @@ class PostResource extends JsonResource
         return [
             'id'         => $this->id,
             'content'    => $this->content,
+            'image'      => $this->image ? action('PostController@retrieveImage', ['post' => $this->id]) : null,
             'created_at' => $this->created_at,
         ];
     }

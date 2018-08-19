@@ -22,5 +22,6 @@ Route::group(['prefix' => 'v1'], function () {
     Route::group(['prefix' => 'posts'], function () {
         Route::get('/', 'PostController@index');
         Route::post('/', 'PostController@create');
+        Route::get('/images/{post}', 'PostController@retrieveImage');
     });
 });

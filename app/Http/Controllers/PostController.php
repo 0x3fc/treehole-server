@@ -52,4 +52,16 @@ class PostController extends Controller
 
         return PostResource::make($post)->response();
     }
+
+    /**
+     * @param Post $post
+     *
+     * @return mixed
+     */
+    public function retrieveImage(Post $post)
+    {
+        $imagePath = storage_path('app' . DIRECTORY_SEPARATOR . $post->image);
+
+        return response()->file($imagePath);
+    }
 }
