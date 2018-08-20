@@ -14,7 +14,10 @@ class AddImageColumnToPostsTable extends Migration
     public function up()
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->string('image')->after('content')->nullable();
+            $table->integer('image_id')->after('content')->nullable()->unsigned();
+
+            $table->foreign('image_id')->references('id')->on('images')
+                ->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
@@ -26,7 +29,9 @@ class AddImageColumnToPostsTable extends Migration
     public function down()
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->dropColumn('image');
+            $table->dropForeign(['image_id']);
+
+            $table->dropColumn('image_id');
         });
     }
 }

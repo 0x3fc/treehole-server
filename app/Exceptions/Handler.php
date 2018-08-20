@@ -47,10 +47,6 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        if (config('app.env') !== 'production' && config('app.debug')) {
-            return parent::render($request, $exception);
-        }
-
-        return response('', Response::HTTP_BAD_REQUEST);
+        return $this->prepareJsonResponse($request, $exception);
     }
 }

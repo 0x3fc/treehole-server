@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
+use App\Models\Image;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -23,9 +25,19 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+
 
         parent::boot();
+
+        Route::bind('image', function (int $imageId) {
+            $image = Image::find($imageId);
+
+            if (!$image) {
+                throw new NotFoundHttpException('Image not found');
+            }
+
+            return $image;
+        });
     }
 
     /**

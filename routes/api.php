@@ -21,7 +21,12 @@ Route::group(['prefix' => 'v1'], function () {
     /* Posts */
     Route::group(['prefix' => 'posts'], function () {
         Route::get('/', 'PostController@index');
-        Route::post('/', 'PostController@create');
-        Route::get('/images/{post}', 'PostController@retrieveImage');
+        Route::post('/', 'PostController@store');
+    });
+
+    /* Images */
+    Route::group(['prefix' => 'images'], function () {
+        Route::get('/{image}', 'ImageController@show');
+        Route::post('/', 'ImageController@store');
     });
 });
