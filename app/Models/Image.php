@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Post extends Model
+class Image extends Model
 {
     public const UPDATED_AT = null;
 
@@ -14,15 +14,14 @@ class Post extends Model
      * @var array
      */
     protected $fillable = [
-        'content',
-        'image_id',
+        'image_location',
     ];
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function image()
+    public function post()
     {
-        return $this->hasOne(Image::class, 'id', 'image_id');
+        return $this->belongsTo(Post::class);
     }
 }

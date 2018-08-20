@@ -22,6 +22,7 @@ Response:
         {
             "id": 1,
             "content": "...",
+            "image": "http://localhost:8000/api/v1/images/1",
             "created_at": {
                 "date": "2018-06-25 00:59:49.000000",
                 "timezone_type": 3,
@@ -47,9 +48,9 @@ Response:
 }
 ```
 
-## Create
+## Store
 
-Create a post with content.
+Create a post with content and image.
 
 ```
 POST /api/v1/posts
@@ -59,7 +60,8 @@ POST /api/v1/posts
 Request:
 
 {
-	"content": "..."  // the content string you want to post, required
+	"content": "...",  // the content string you want to post, required
+	"imageId": 1       // optional: the image id
 }
 ```
 
@@ -70,6 +72,7 @@ Response:
     "data": {
         "id": 2,
         "content": "...",
+        "image": "http://localhost:8000/api/v1/images/1",
         "created_at": {
             "date": "2018-06-24 19:56:05.000000",
             "timezone_type": 3,

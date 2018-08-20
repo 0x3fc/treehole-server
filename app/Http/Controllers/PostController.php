@@ -26,9 +26,12 @@ class PostController extends Controller
      * @param PostCreateRequest $request
      * @return JsonResponse
      */
-    public function create(PostCreateRequest $request): JsonResponse
+    public function store(PostCreateRequest $request): JsonResponse
     {
-        $post = Post::create(['content' => $request->input('content')]);
+        $post = Post::create([
+            'content'  => $request->input('content'),
+            'image_id' => $request->imageId ?? null,
+        ]);
 
         return PostResource::make($post)->response();
     }

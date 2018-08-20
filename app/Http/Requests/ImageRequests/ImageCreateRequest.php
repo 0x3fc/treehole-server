@@ -1,19 +1,20 @@
 <?php
 
-namespace App\Http\Requests\PostRequests;
+namespace App\Http\Requests;
 
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\Response;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
- * Class PostCreateRequest
- * @package App\Http\Requests\PostRequests
+ * Class ImageCreateRequest
+ * @package App\Http\Requests
  *
- * @property int $imageId
+ * @property UploadedFile $image
  */
-class PostCreateRequest extends FormRequest
+class ImageCreateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -33,8 +34,7 @@ class PostCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'content' => 'required|string',
-            'imageId' => 'int|exists:images,id|unique:posts,image_id',
+            'image' => 'required|image|max:500',
         ];
     }
 
