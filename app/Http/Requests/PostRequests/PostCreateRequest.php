@@ -34,7 +34,7 @@ class PostCreateRequest extends FormRequest
     {
         return [
             'content' => 'required|string',
-            'imageId' => 'int|exists:images,id|unique:posts,image_id',
+            'imageId' => 'int|exists:images,id|unique:posts,image_id|nullable',
         ];
     }
 
