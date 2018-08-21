@@ -20,14 +20,16 @@ class ImageControllerTest extends TestCase
     {
         parent::setUp();
 
-        Storage::fake('local');
+        $storageDisk = config('filesystems.default');
+
+        Storage::fake($storageDisk);
     }
 
     /**
      * @test
      * @group Images
      */
-    public function uploadImage()
+    public function uploadImageAndShow()
     {
         $image = UploadedFile::fake()->image('fake.image.jpg');
 
@@ -38,7 +40,8 @@ class ImageControllerTest extends TestCase
 
         Storage::assertExists($image->image_location);
 
-        // TODO: Show image is not able to test since the image is stored in fake storage but api gets the local storage
+        $this->get("api/v1/images/{$response['id']}")
+            ->assertStatus(Response::HTTP_OK);
     }
 
     /**

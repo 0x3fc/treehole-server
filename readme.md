@@ -31,6 +31,8 @@ The project is built with [treehole-client](https://github.com/senhungwong/treeh
 
 [Posts APIs](docs/APIs/posts.md)
 
+[Images APIs](docs/APIs/images.md)
+
 [Postman Collection](docs/APIs/postman-collection.md)
 
 ## Notes

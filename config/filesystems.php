@@ -64,6 +64,13 @@ return [
             'url' => env('AWS_URL'),
         ],
 
+        'gcs' => [
+            'driver'     => 'gcs',
+            'project_id' => env('GOOGLE_CLOUD_PROJECT_ID', 'your-project-id'),
+            'key'        => env('GOOGLE_APPLICATION_CREDENTIALS', null),
+            'bucket'      => env('GOOGLE_CLOUD_STORAGE_BUCKET', null),
+        ],
+
     ],
 
 ];
