@@ -27,6 +27,26 @@ The project is built with [treehole-client](https://github.com/senhungwong/treeh
 
 **IMPORTANT: The back end is hosted on a free server. Please do not overwhalm the server by sending too many posts. Thank you!**
 
+## Set Up
+
+**Copy and edit `.env` file**
+
+```bash
+cp .env.example .env
+```
+
+**Start services**
+
+```bash
+docker-compose up --build -d
+```
+
+**Migrate**
+
+```bash
+docker-compose exec core php artisan migrate
+```
+
 ## API
 
 [Posts APIs](docs/APIs/posts.md)
